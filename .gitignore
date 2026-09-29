@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Data and artifacts
+data/
+*.mp4
+*.avi
+*.sqlite3
+*.db
+*.wal
+*.shm
+
+# Models
+models/*.onnx
+models/*.pt
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
