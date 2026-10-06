@@ -1,0 +1,14 @@
+# Ignore Python backend & legacy files for Vercel Vite frontend deployment
+api/
+configs/
+dashboard/
+docs/
+edge/
+sim/
+tests/
+Makefile
+SPEC.md
+SPEC-1.md
+requirements.txt
+run.ps1
+test.ps1

@@ -34,3 +34,19 @@ Thumbs.db
 node_modules/
 dist/
 .vercel/
+
+# Legacy Workspace Files (Ignored for MALL repo)
+api/
+configs/
+dashboard/
+docs/
+edge/
+sim/
+tests/
+Makefile
+SPEC.md
+SPEC-1.md
+requirements.txt
+run.ps1
+test.ps1
+

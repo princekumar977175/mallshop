@@ -21,7 +21,7 @@ export const CallModal: React.FC<CallModalProps> = ({ isOpen, onClose, partner }
   }, [isOpen]);
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer: any;
     if (callState === 'calling') {
       timer = setTimeout(() => {
         setCallState('connected');

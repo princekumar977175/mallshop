@@ -1,64 +1,35 @@
-# Offline-First Edge AI Retail Intelligence Platform
+# MALL — Fashion. Lifestyle. Delivered.
 
-High-performance, privacy-first edge intelligence platform running entirely on local CPU hardware:
-- **Shopper Analytics**: Directional virtual line crossing, footfall metrics, dwell time.
-- **Queue Intelligence**: Waiting line estimation, cashier service time, and lane opening recommendations.
-- **Shelf Monitoring**: Out-of-stock and low-stock detection with debounced alert states.
-- **Edge Outbox & SQLite WAL**: 100% offline-tolerant with store-and-forward sync.
-- **Zero PII**: No face recognition, no raw video or frame storage.
+A premium fashion e-commerce marketplace prototype featuring curated designer apparel, artisan footwear, botanical beauty, and real-time live map delivery tracking.
 
----
+## 🌟 Key Features
+- **Modern Commercial UI/UX:** Clean, elegant design system built with Tailwind CSS, Lucide icons, and authentic product photography.
+- **40+ Products:** Full catalog across Men, Women, Kids, Footwear, Accessories, and Beauty.
+- **Interactive Mega Menus & Autocomplete Search:** Instant suggestions matching brands, categories, and keywords.
+- **Shopping Bag & Coupon Engine:** Working cart with `MALL10` and `MALL20` instant discounts.
+- **3-Step Checkout:** Address entry with validation, UPI/Card/COD payments, and instant order creation.
+- **Live Hyperlocal Map Tracking:** Leaflet + OpenStreetMap tracking featuring a moving courier marker, dynamic ETA, and presenter demo controls.
 
-## Quickstart
+## 🚀 Getting Started
 
-### 1. Install Dependencies
 ```bash
-make install
-# or
-pip install -r requirements.txt
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Production build
+npm run build
 ```
 
-### 2. Generate Sample Retail Videos
-```bash
-make samples
-# or
-python -m sim.video_generator
-```
-This produces 3 synthetic retail test videos in `data/`:
-- `data/sample_retail_entry.mp4`: Entrance door crossing with virtual line.
-- `data/sample_queue_checkout.mp4`: Billing counters 1 & 2 with customer queuing.
-- `data/sample_shelf_aisle.mp4`: Retail aisle with beverage and snack shelving units.
-
-### 3. Run Pipeline Demo
-```bash
-make run
-# or
-python -m edge.pipeline --config configs/store_default.yaml --source data/sample_queue_checkout.mp4 --headless
-```
-
-### 4. Run Test Suite
-```bash
-make test
-# or
-pytest tests/ -v
-```
-
----
-
-## Directory Structure
-```
-├── edge/
-│   ├── detect/        # YOLO ONNX person & shelf detectors
-│   ├── track/         # Persistent anonymous tracking
-│   ├── analytics/     # Footfall, dwell, queue, heatmap calculations
-│   ├── store/         # SQLite WAL mode database & outbox pattern
-│   ├── config.py      # Pydantic models & YAML loader
-│   ├── logger.py      # Latency & FPS performance tracking
-│   └── pipeline.py    # Main CV edge pipeline runner
-├── api/               # FastAPI service (local edge API & central endpoints)
-├── dashboard/         # React + Vite live store monitor
-├── sim/               # Video generators and data simulation
-├── configs/           # Store layout YAML configuration files
-├── docs/              # Architecture, Privacy, and Benchmark docs
-└── tests/             # Unit and integration test suite
-```
+## 🛠 Tech Stack
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router v6
+- Leaflet & React Leaflet
+- Lucide React
+- Framer Motion
+- Canvas Confetti
