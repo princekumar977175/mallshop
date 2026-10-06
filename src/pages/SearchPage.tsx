@@ -1,9 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { Search, ChevronRight, SlidersHorizontal } from 'lucide-react';
+import { Search, ChevronRight } from 'lucide-react';
 import { PRODUCTS } from '../data/products';
 import { ProductCard } from '../components/common/ProductCard';
 import { SearchBar } from '../components/common/SearchBar';
+import { Product, CategorySlug } from '../types';
 
 export const SearchPage: React.FC = () => {
   const location = useLocation();
@@ -13,11 +14,11 @@ export const SearchPage: React.FC = () => {
   const [sortBy, setSortBy] = useState<'featured' | 'price-low' | 'price-high' | 'rating'>('featured');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
-  const matchingProducts = useMemo(() => {
+  const matchingProducts: Product[] = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return PRODUCTS;
 
-    return PRODUCTS.filter(p => {
+    return PRODUCTS.filter((p: Product) => {
       const matchName = p.name.toLowerCase().includes(q);
       const matchBrand = p.brand.toLowerCase().includes(q);
       const matchCategory = p.category.toLowerCase().includes(q);
@@ -37,13 +38,13 @@ export const SearchPage: React.FC = () => {
     });
   }, [query]);
 
-  const filteredProducts = useMemo(() => {
+  const filteredProducts: Product[] = useMemo(() => {
     return matchingProducts
-      .filter(p => {
+      .filter((p: Product) => {
         if (selectedCategory !== 'all' && p.category !== selectedCategory) return false;
         return true;
       })
-      .sort((a, b) => {
+      .sort((a: Product, b: Product) => {
         if (sortBy === 'price-low') return a.price - b.price;
         if (sortBy === 'price-high') return b.price - a.price;
         if (sortBy === 'rating') return b.rating - a.rating;
@@ -51,7 +52,7 @@ export const SearchPage: React.FC = () => {
       });
   }, [matchingProducts, selectedCategory, sortBy]);
 
-  const categoriesAvailable = Array.from(new Set(matchingProducts.map(p => p.category)));
+  const categoriesAvailable: CategorySlug[] = Array.from(new Set(matchingProducts.map((p: Product) => p.category)));
 
   return (
     <div className="min-h-screen bg-white">
@@ -98,7 +99,7 @@ export const SearchPage: React.FC = () => {
             >
               All ({matchingProducts.length})
             </button>
-            {categoriesAvailable.map(cat => (
+            {categoriesAvailable.map((cat: CategorySlug) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
@@ -131,7 +132,7 @@ export const SearchPage: React.FC = () => {
         {/* Results Grid */}
         {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-            {filteredProducts.map(product => (
+            {filteredProducts.map((product: Product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

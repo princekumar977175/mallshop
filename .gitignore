@@ -6,7 +6,8 @@ __pycache__/
 .pytest_cache/
 
 # Data and artifacts
-data/
+/data/
+!src/data/
 *.mp4
 *.avi
 *.sqlite3
